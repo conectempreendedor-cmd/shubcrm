@@ -1,18 +1,13 @@
-// Estrutura preparada para integração com Supabase
-// A conexão real será configurada quando o Cloud for ativado
+import { createClient } from "@supabase/supabase-js";
 
-// Para configurar o client Supabase:
-// 1. Ative o Cloud/Supabase no painel do Lovable
-// 2. Obtenha a URL e a chave anônima do projeto
-// 3. Configure as variáveis de ambiente necessárias
+// Cliente Supabase conectado ao projeto SHUB CRM
+// Referência: karrmlkthmgyljfvxajm.supabase.co
+export const supabaseUrl = "https://karrmlkthmgyljfvxajm.supabase.co";
+export const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImthcnJtbGt0aG1neWxqZnZ4YWptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAwMDAwMDAsImV4cCI6MjA0NTU3NjAwMH0.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-// Configurações do projeto Supabase (preencher quando conectar)
-export const supabaseConfig = {
-  // URL do projeto Supabase (ex: https://xxxxx.supabase.co)
-  url: '',
-  // Chave anônima do projeto
-  anonKey: '',
-};
-
-// Client será exportado quando configurado e dependências instaladas
-export const supabase = null;
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+  },
+});
